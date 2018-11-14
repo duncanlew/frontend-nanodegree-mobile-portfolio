@@ -31,6 +31,8 @@ The following steps are run in order to get the PageSpeed Insights score for ind
 Two main modifications have been made in view/js/main.js to make the ```pizza.html``` page run smoothly.
 
 ##### Resizing pizzas in less than 5 ms
+The ```determineDx``` function was not adding anything interesting to ```resizePizza``` function. This function has been replaced completely with a more simpler version of determining the relative size of the pizza icon. The ```changePizzaSizes``` function was not programmed correctly and caused a forecd synchronous layout. The function has been refactored to avoid a forced synchronous layout.
 
 ##### Optimizations for 60fps
+The culprit of the low FPS is caused by the accessing of the ```scrollTop``` variable in each iteration of the loop. This caused a forecd synchronous layout. By moving the determination of this variable outside the loop, a forecd synchronous layout could be avoided.
 
