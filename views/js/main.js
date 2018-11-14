@@ -421,6 +421,7 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
+  // This function returns the relative size that the pizza icon should be. 
   function sizeSwitcher(size) {
     switch(size) {
       case "1":
@@ -441,6 +442,10 @@ var resizePizzas = function(size) {
       allPizzaContainers[i].style.width = newWidth;
     }
   }
+
+  // windowWidth and allPizzacontainers are variables that are used multiple times in changePizzaSizes
+  // They are placed outside the for loop, so that they only have to be selected once and can be used
+  // multiple times in changePizzaSizes.
   let windowWidth = document.querySelector("#randomPizzas").offsetWidth;
   let allPizzaContainers = document.querySelectorAll(".randomPizzaContainer")
   changePizzaSizes(size);
@@ -489,6 +494,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+  // Forced Synchronous Layout prevented by moving scrollTop outside of the for loop
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   for (var i = 0; i < items.length; i++) {    
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
