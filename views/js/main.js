@@ -433,15 +433,16 @@ var resizePizzas = function(size) {
         return 0.50;
     }
   }
+  
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (let i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      let windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+    for (let i = 0; i < allPizzaContainers.length; i++) {
       let newWidth = sizeSwitcher(size) * windowWidth + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newWidth;
+      allPizzaContainers[i].style.width = newWidth;
     }
   }
-
+  let windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+  let allPizzaContainers = document.querySelectorAll(".randomPizzaContainer")
   changePizzaSizes(size);
 
   // User Timing API is awesome
